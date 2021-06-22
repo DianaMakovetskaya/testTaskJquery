@@ -21,19 +21,22 @@ $(document).ready(function() {
 
     $('#table_id tbody').on( 'click', '#callback-button', function () {
         $('.modal').addClass('modal_active');
-        let array = [];
-        array.push(table.row( $(this).parents('tr') ).data());
-        console.log(array);
-         $('#table_id2').DataTable( {
-             retrieve: true,
-             paging: false,
-             searching: false,
-             data: array,
-             columns: [
-                { data : "Country" },
-                { data : "City" },
-                { data : "Street" },]
-        } );
+        const {Country, City,Street} = table.row( $(this).parents('tr') ).data();
+        $("#country").val(Country)
+        $("#city").val(City)
+        $("#street").val(Street)
+        // let array = [];
+        // array.push(table.row( $(this).parents('tr') ).data());
+        //  $('#table_id2').DataTable( {
+        //      retrieve: true,
+        //      paging: false,
+        //      searching: false,
+        //      data: array,
+        //      columns: [
+        //         { data : "Country" },
+        //         { data : "City" },
+        //         { data : "Street" },]
+        // } );
         $('.modal__close-button').click(function () {
             $('.modal').removeClass('modal_active');
         });
